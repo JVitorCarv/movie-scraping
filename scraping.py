@@ -13,10 +13,11 @@ def get_max_page():
     last_page = driver.find_element(By.CLASS_NAME, 'last_page').find_element(By.CLASS_NAME, 'page_num')
     return int(last_page.text)
 
-def get_movies_from(min_score, page = 0):
+def get_movies_from(min_score):
     movies = []
     max_page = get_max_page()
     
+    page = 0
     score = 100
     while score >= min_score and page < max_page:
         driver.get(f'https://www.metacritic.com/browse/movies/score/metascore/all/filtered?sort=desc&page={page}')
