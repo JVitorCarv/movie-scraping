@@ -35,8 +35,13 @@ def get_movies_from(min_score, page = 0):
         
     return movies
 
-movies = get_movies_from(0, 148)
-    
-for movie in movies:
-    print(movie.title, movie.score)
+movies = get_movies_from(94)
+
 driver.quit()
+
+with open('movies.txt', 'w') as file:
+    for movie in movies:
+        print(f'{movie.title}, {movie.score}')
+        file.write(f'{movie.title}, {movie.score}\n')
+    print(f'Found {len(movies)} movies')
+    file.write(f'Found {len(movies)} movies\n')
